@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Boda — Belem & Diego</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-champagne: #F7EBE1;
+      --bg-cream: #F5F0EB;
+      --navy: #0A192F;
+      --navy-light: #1B2A4A;
+      --olive: #3B4D3E;
+      --olive-dark: #273429;
+      --gold: #D4AF37;
+      --gold-light: #F3E5AB;
+      --font-title: 'Great Vibes', cursive;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Montserrat', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-cream);
+      color: var(--navy);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* PANTALLA INICIAL SOBRE */
+    #envelope-screen {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: radial-gradient(circle at 50% 40%, #FAF4EF 0%, #CFC0B4 100%);
+      display: flex; justify-content: center; align-items: center;
+      z-index: 2000;
+      transition: opacity 0.8s ease, visibility 0.8s;
+    }
+
+    .envelope-wrapper {
+      position: relative;
+      cursor: pointer;
+      max-width: 90%;
+      width: 550px;
+      text-align: center;
+      transition: transform 0.4s ease;
+    }
+
+    .envelope-wrapper:hover {
+      transform: scale(1.03) translateY(-5px);
+    }
+
+    #envelope-img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+    }
+
+    .click-instruction {
+      margin-top: 20px;
+      color: var(--olive-dark);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    /* REPRODUCTOR FLOTANTE LOCAL */
+    .audio-control {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 1000;
+      background: linear-gradient(135deg, var(--olive), var(--navy));
+      color: var(--gold-light);
+      border: 2px solid var(--gold);
+      width: 55px; height: 55px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transition: transform 0.4s ease;
+    }
+    .audio-control:hover { transform: scale(1.1); }
+
+    /* INVITACIÓN PRINCIPAL */
+    #main-invitation {
+      display: none;
+      opacity: 0;
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 30px 15px 80px 15px;
+      transition: opacity 1.2s ease;
+    }
+
+    #main-invitation.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    header { text-align: center; padding: 20px 10px 40px 10px; }
+
+    .arch-frame-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .arch-frame {
+      width: 320px;
+      max-width: 85vw;
+      height: 420px;
+      border-radius: 160px 160px 16px 16px;
+      border: 3px solid var(--gold);
+      box-shadow: 0 15px 35px rgba(10, 25, 47, 0.12);
+      overflow: hidden;
+      background: #fff;
+      padding: 6px;
+    }
+
+    .arch-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 154px 154px 10px 10px;
+    }
+
+    .header-subtitle {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .header-names {
+      font-family: var(--font-title);
+      font-size: 5rem;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .header-date-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    .header-date-line::before,
+    .header-date-line::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .header-date-text {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      letter-spacing: 2.5px;
+      color: var(--gold);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 40px 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 15px 35px rgba(10,25,47,0.06);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 45px rgba(10,25,47,0.12);
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 2.2rem; color: var(--navy);
+      margin-bottom: 25px; position: relative; display: inline-block;
+    }
+
+    .section-title::after {
+      content: ''; display: block; width: 50%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 10px auto 0 auto;
+    }
+
+    .legend-text {
+      font-family: var(--font-serif);
+      font-size: 1.45rem; font-style: italic; line-height: 1.8;
+      color: var(--navy-light);
+    }
+
+    /* SPOTIFY CONTAINER */
+    .spotify-wrapper {
+      margin-top: 15px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    /* DRESS CODE */
+    .dresscode-slider-container {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .dresscode-card {
+      flex: 1;
+      min-width: 280px;
+      max-width: 350px;
+      background: var(--bg-cream);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slider-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      overflow: hidden;
+      background: #E8E2DC;
+    }
+
+    .slider-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: opacity 0.3s ease;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(10, 25, 47, 0.75);
+      color: var(--gold-light);
+      border: 1px solid var(--gold);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .slider-btn:hover {
+      background: var(--navy);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .slider-btn.prev { left: 10px; }
+    .slider-btn.next { right: 10px; }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 12px;
+      left: 0; right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      z-index: 10;
+      padding: 0 10px;
+      flex-wrap: wrap;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .dot.active {
+      background: var(--gold);
+      transform: scale(1.4);
+    }
+
+    .dresscode-info {
+      padding: 18px 15px;
+      text-align: center;
+      background: #FFF;
+      flex-grow: 1;
+    }
+
+    .dresscode-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .dresscode-desc {
+      font-size: 0.88rem;
+      color: #555;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .forbidden-colors {
+      background: #FDF2F2; border: 1px dashed #E57373; padding: 15px;
+      border-radius: 10px; color: #C62828; font-weight: 500; margin-top: 20px;
+    }
+
+    /* GENERALES */
+    .family-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 20px; }
+    @media(max-width: 600px) { .family-grid { grid-template-columns: 1fr; } }
+    .family-box { background: var(--bg-champagne); padding: 20px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
+    .family-box h4 { font-family: var(--font-serif); color: var(--olive); font-size: 1.3rem; margin-bottom: 10px; text-transform: uppercase; }
+    .countdown-container { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+    .count-box { background: linear-gradient(145deg, #ffffff, var(--bg-champagne)); border: 1px solid var(--gold); padding: 15px; border-radius: 12px; min-width: 80px; box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
+    .count-number { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 600; color: var(--navy); }
+    .count-label { font-size: 0.75rem; text-transform: uppercase; color: var(--olive); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+    .gallery-grid img { width: 100%; height: 260px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.4s ease; }
+    .gallery-grid img:hover { transform: scale(1.05); }
+    .timeline { display: flex; flex-direction: column; gap: 25px; align-items: center; }
+    .timeline-item { border-left: 3px solid var(--gold); padding-left: 20px; text-align: left; width: 100%; max-width: 450px; position: relative; }
+    .timeline-item::before { content: '✦'; position: absolute; left: -10px; top: 0; color: var(--gold); background: #fff; }
+    .timeline-time { font-weight: 600; color: var(--olive); font-size: 1.1rem; }
+    .btn { background: linear-gradient(135deg, var(--olive), var(--olive-dark)); color: #FFF; padding: 14px 30px; border: 1px solid var(--gold); border-radius: 30px; font-family: var(--font-sans); font-weight: 500; letter-spacing: 1px; cursor: pointer; text-decoration: none; display: inline-block; box-shadow: 0 5px 15px rgba(0,0,0,0.15); transition: all 0.3s; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
+    .adults-only-tag { display: inline-block; background: var(--navy); color: #FFF; font-size: 0.85rem; padding: 8px 16px; border-radius: 20px; margin-top: 20px; }
+    
+    /* RSVP */
+    .rsvp-form { display: flex; flex-direction: column; gap: 18px; max-width: 480px; margin: 0 auto; text-align: left; }
+    input, select { width: 100%; padding: 14px 16px; border: 1px solid #CCC; border-radius: 8px; font-family: var(--font-sans); font-size: 1rem; }
+    .pass-info-badge { display: none; background: var(--bg-champagne); border: 1px solid var(--gold); color: var(--navy); padding: 12px 15px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; }
+    .companion-group { display: none; animation: fadeIn 0.4s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+  </style>
+</head>
+<body>
+
+  <!-- REPRODUCTOR FLOTANTE LOCAL -->
+  <button class="audio-control" onclick="toggleAudio()" title="Control de Música">
+    <i id="audio-icon" class="fas fa-play"></i>
+  </button>
+  <audio id="inviteAudio" loop>
+    <source src="boda_music.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <!-- PANTALLA INICIAL SOBRE -->
+  <div id="envelope-screen">
+    <div class="envelope-wrapper" onclick="openEnvelope()">
+      <img src="sobre.jpg" alt="Sobre de Invitación Belem y Diego" id="envelope-img">
+      <div class="click-instruction">
+        <i class="fa-solid fa-envelope-open"></i>
+        <p>Toca para abrir la invitación</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVITACIÓN PRINCIPAL -->
+  <div id="main-invitation">
+    
+    <header>
+      <div class="arch-frame-wrapper">
+        <div class="arch-frame">
+          <img src="cover.jpg" alt="Belem y Diego">
+        </div>
+      </div>
+      <p class="header-subtitle">NOS CASAMOS</p>
+      <h1 class="header-names">Belem & Diego</h1>
+      <div class="header-date-line">
+        <span class="header-date-text">08 DE MAYO, 2027 • ANTIGUA GUATEMALA</span>
+      </div>
+    </header>
+
+    <div class="card">
+      <p class="legend-text">
+        "El amor no se mira con los ojos, sino con el corazón. Hoy decidimos unir nuestras vidas y caminar de la mano por el resto de nuestros días. Nos encantaría que seas testigo y parte de este inicio."
+      </p>
+    </div>
+
+    <!-- WIDGET DE SPOTIFY REPRODUCTOR DIRECTO -->
+    <div class="card">
+      <h2 class="section-title">Nuestra Canción</h2>
+      <div class="spotify-wrapper">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0IWBTieCc6wQZ0C4kCHP9q?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Nuestros Padres y Padrinos</h2>
+      <div class="family-grid">
+        <div class="family-box">
+          <h4>Padres de la Novia</h4>
+          <p>Alex Pérez</p>
+          <p>Myra Morales</p>
+        </div>
+        <div class="family-box">
+          <h4>Padres del Novio</h4>
+          <p>Roberto Ávila</p>
+          <p>Polita Aragón</p>
+        </div>
+      </div>
+      <div style="margin-top: 30px;">
+        <h4 style="font-family: var(--font-serif); color: var(--olive); font-size: 1.3rem; text-transform: uppercase;">Padrinos de Honor</h4>
+        <p style="font-size: 1.15rem; color: var(--navy-light); margin-top: 5px;">Fausto Aragón y Luci Ruckwardt</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Cuenta Regresiva</h2>
+      <div class="countdown-container">
+        <div class="count-box"><div id="days" class="count-number">00</div><div class="count-label">Días</div></div>
+        <div class="count-box"><div id="hours" class="count-number">00</div><div class="count-label">Horas</div></div>
+        <div class="count-box"><div id="minutes" class="count-number">00</div><div class="count-label">Minutos</div></div>
+        <div class="count-box"><div id="seconds" class="count-number">00</div><div class="count-label">Segundos</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Galería de Recuerdos</h2>
+      <div class="gallery-grid">
+        <img src="gallery1.jpg" alt="Recuerdo 1">
+        <img src="gallery2.jpg" alt="Recuerdo 2">
+        <img src="gallery3.jpg" alt="Recuerdo 3">
+        <img src="gallery4.jpg" alt="Recuerdo 4">
+        <img src="gallery5.jpg" alt="Recuerdo 5">
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Cronograma</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <p class="timeline-time">14:30 HRS</p>
+          <p style="font-weight: 600; font-size: 1.1rem;">Santa Misa de Matrimonio</p>
+          <p style="font-size: 0.95rem; color: #555;">Catedral de Antigua Guatemala</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-time">17:00 HRS</p>
+          <p style="font-weight: 600; font-size: 1.1rem;">Recepción y Celebración</p>
+          <p style="font-size: 0.95rem; color: #555;">Cortijo de las Flores</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Ubicación y Hospedaje</h2>
+      <p style="font-size: 1.1rem; font-weight: 600;">Cortijo de las Flores</p>
+      <p style="font-size: 0.95rem; color: #666; margin-bottom: 20px;">Camino a Ciudad Vieja, Antigua Guatemala</p>
+      <a href="https://maps.google.com/?q=Cortijo+de+las+Flores+Antigua+Guatemala" target="_blank" class="btn"><i class="fas fa-map-marked-alt"></i> Abrir Mapa</a>
+      <div style="margin-top: 35px;">
+        <h4 style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--olive); margin-bottom: 10px;">Hoteles Sugeridos</h4>
+        <p>• Hotel Soleil La Antigua</p>
+        <p>• Hotel Museo Spa Casa Santo Domingo</p>
+      </div>
+      <div class="adults-only-tag">
+        <i class="fas fa-glass-cheers"></i> Recepción Exclusiva para Adultos
+      </div>
+    </div>
+
+    <!-- CÓDIGO DE VESTIMENTA -->
+    <div class="card">
+      <h2 class="section-title">Código de Vestimenta</h2>
+      <p style="letter-spacing: 2px; font-weight: 600; color: var(--olive); margin-bottom: 20px;">FORMAL / ELEGANTE</p>
+      
+      <div class="dresscode-slider-container">
+        
+        <!-- CABALLEROS -->
+        <div class="dresscode-card">
+          <div class="slider-image-wrapper">
+            <button class="slider-btn prev" onclick="changeSlide('men', -1)"><i class="fas fa-chevron-left"></i></button>
+            <img id="men-slide-img" src="" alt="Caballero Formal">
+            <button class="slider-btn next" onclick="changeSlide('men', 1)"><i class="fas fa-chevron-right"></i></button>
+            <div class="slider-dots" id="men-dots"></div>
+          </div>
+          <div class="dresscode-info">
+            <p class="dresscode-title">Caballeros</p>
+            <p class="dresscode-desc" id="men-slide-desc">Traje elegante o formal con corbata o corbatín.</p>
+          </div>
+        </div>
+
+        <!-- DAMAS -->
+        <div class="dresscode-card">
+          <div class="slider-image-wrapper">
+            <button class="slider-btn prev" onclick="changeSlide('women', -1)"><i class="fas fa-chevron-left"></i></button>
+            <img id="women-slide-img" src="" alt="Dama Vestido Formal">
+            <button class="slider-btn next" onclick="changeSlide('women', 1)"><i class="fas fa-chevron-right"></i></button>
+            <div class="slider-dots" id="women-dots"></div>
+          </div>
+          <div class="dresscode-info">
+            <p class="dresscode-title">Damas</p>
+            <p class="dresscode-desc" id="women-slide-desc">Vestido formal largo o de gala elegante.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="forbidden-colors">
+        <i class="fas fa-exclamation-circle"></i> <strong>Colores Prohibidos:</strong> Beige, Blanco y Rojo.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Mesa de Regalos</h2>
+      <p style="margin-bottom: 20px; color: #555;">Tu presencia es nuestro mejor regalo. Si deseas realizarnos un presente:</p>
+      <a href="#" target="_blank" class="btn"><i class="fas fa-gift"></i> Ver Lista</a>
+    </div>
+
+    <!-- RSVP -->
+    <div class="card">
+      <h2 class="section-title">Confirmar Asistencia</h2>
+      <form class="rsvp-form" onsubmit="sendRSVP(event)">
+        <input type="text" id="guestSearch" placeholder="Escribe tu Nombre y Apellido..." autocomplete="off" oninput="onSearchInput(this.value)">
+        <div id="passBadge" class="pass-info-badge"></div>
+        <div id="companionGroup" class="companion-group">
+          <input type="text" id="companionName" placeholder="Nombre de tu acompañante...">
+        </div>
+        <select id="attendance">
+          <option value="asistiré">Sí, asistiré</option>
+          <option value="no_asistiré">No podré asistir</option>
+        </select>
+        <button type="submit" class="btn" style="width: 100%;"><i class="fab fa-whatsapp"></i> Confirmar</button>
+      </form>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; padding: 20px;">
+      <p style="font-family: var(--font-serif); font-size: 1.6rem; font-style: italic; color: var(--navy-light);">
+        "Y entre un millón de vidas, en cualquier eternidad, siempre te elegiría a ti."
+      </p>
+      <p style="font-family: var(--font-title); font-size: 2.8rem; color: var(--olive); margin-top: 15px;">Belem & Diego</p>
+    </div>
+
+  </div>
+
+  <script>
+    const guestsData = [
+      { name: "Diego Ávila", passes: 2 },
+      { name: "Juan Pérez", passes: 1 },
+      { name: "Luis Díaz", passes: 2 },
+      { name: "Belem Pérez", passes: 2 }
+    ];
+
+    const dressCodeData = {
+      men: [
+        { img: "traje1.jpg", desc: "Opción 1: Traje formal azul marino con corbata." },
+        { img: "traje2.jpg", desc: "Opción 2: Traje elegante gris oscuro de corte clásico." },
+        { img: "traje3.jpg", desc: "Opción 3: Traje formal negro con chaleco y corbatín." }
+      ],
+      women: [
+        { img: "vestido1.jpg", desc: "Opción 1: Vestido púrpura elegante de un hombro con volantes en corte asimétrico." },
+        { img: "vestido2.jpg", desc: "Opción 2: Vestido largo amarillo gold de un hombro con peplum y falda con capas." },
+        { img: "vestido3.jpg", desc: "Opción 3: Vestido plata brillante estilo sirena con detalles bordados en escote." },
+        { img: "vestido4.jpg", desc: "Opción 4: Vestido largo bronce satinado con detalles bordados y falda asimétrica." },
+        { img: "vestido5.jpg", desc: "Opción 5: Vestido negro elegante de escote asimétrico con detalle plateado en cintura." },
+        { img: "vestido6.jpg", desc: "Opción 6: Vestido largo azul terciopelo de escote fluido con broche brillante." },
+        { img: "vestido7.jpg", desc: "Opción 7: Vestido de fiesta rosa palo con escote ilusión y falda amplificada." },
+        { img: "vestido8.jpg", desc: "Opción 8: Vestido largo azul marino satinado de corte A con detalles en escote." },
+        { img: "vestido9.jpg", desc: "Opción 9: Vestido largo verde esmeralda con pedrería en torso y falda fluida." },
+        { img: "vestido10.jpg", desc: "Opción 10: Vestido largo elegante ideal para gala nocturna." }
+      ]
+    };
+
+    const audio = document.getElementById('inviteAudio');
+    const audioIcon = document.getElementById('audio-icon');
+    let isPlaying = false;
+
+    function openEnvelope() {
+      document.getElementById('envelope-screen').style.opacity = '0';
+      document.getElementById('envelope-screen').style.visibility = 'hidden';
+      document.getElementById('main-invitation').classList.add('visible');
+      toggleAudio();
+      window.scrollTo(0, 0);
+    }
+
+    function toggleAudio() {
+      if (isPlaying) {
+        audio.pause();
+        audioIcon.classList.replace('fa-pause', 'fa-play');
+      } else {
+        audio.play().catch(e => console.log("Autoplay bloqueado"));
+        audioIcon.classList.replace('fa-play', 'fa-pause');
+      }
+      isPlaying = !isPlaying;
+    }
+
+    const targetDate = new Date('May 08, 2027 14:30:00').getTime();
+    setInterval(() => {
+      const diff = targetDate - new Date().getTime();
+      if (diff > 0) {
+        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+      }
+    }, 1000);
+
+    let menIndex = 0, womenIndex = 0;
+
+    function initSliders() {
+      updateSlide('men', 0);
+      updateSlide('women', 0);
+      createDots('men-dots', dressCodeData.men.length, 'men');
+      createDots('women-dots', dressCodeData.women.length, 'women');
+    }
+
+    function changeSlide(type, direction) {
+      if (type === 'men') {
+        menIndex = (menIndex + direction + dressCodeData.men.length) % dressCodeData.men.length;
+        updateSlide('men', menIndex);
+      } else {
+        womenIndex = (womenIndex + direction + dressCodeData.women.length) % dressCodeData.women.length;
+        updateSlide('women', womenIndex);
+      }
+    }
+
+    function updateSlide(type, index) {
+      const data = dressCodeData[type][index];
+      document.getElementById(`${type}-slide-img`).src = data.img;
+      document.getElementById(`${type}-slide-desc`).innerText = data.desc;
+      updateDots(`${type}-dots`, index);
+    }
+
+    function createDots(containerId, count, type) {
+      const container = document.getElementById(containerId);
+      for (let i = 0; i < count; i++) {
+        const dot = document.createElement('span');
+        dot.className = `dot ${i === 0 ? 'active' : ''}`;
+        dot.onclick = () => {
+          if (type === 'men') menIndex = i; else womenIndex = i;
+          updateSlide(type, i);
+        };
+        container.appendChild(dot);
+      }
+    }
+
+    function updateDots(containerId, activeIndex) {
+      const dots = document.querySelectorAll(`#${containerId} .dot`);
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
+    }
+
+    let selectedGuest = null;
+
+    function onSearchInput(val) {
+      const badge = document.getElementById('passBadge');
+      const compGroup = document.getElementById('companionGroup');
+      selectedGuest = guestsData.find(g => g.name.toLowerCase() === val.trim().toLowerCase());
+
+      if (selectedGuest) {
+        badge.style.display = 'block';
+        badge.innerHTML = `🎟️ Tienes reservado: <strong>${selectedGuest.passes} ${selectedGuest.passes === 1 ? 'pase' : 'pases'}</strong>`;
+        compGroup.style.display = selectedGuest.passes === 2 ? 'block' : 'none';
+      } else {
+        badge.style.display = compGroup.style.display = 'none';
+      }
+    }
+
+    function sendRSVP(e) {
+      e.preventDefault();
+      const name = document.getElementById('guestSearch').value;
+      if (!selectedGuest) return alert("Por favor, selecciona tu nombre de la lista.");
+      
+      const attendance = document.getElementById('attendance').value;
+      const companion = document.getElementById('companionName').value;
+      
+      let msg = `Hola Belem y Diego, soy *${name}*.\n`;
+      if (attendance === 'asistiré') {
+        msg += `✅ *Confirmo mi asistencia.*`;
+        if (selectedGuest.passes === 2 && companion) msg += ` Iré con: ${companion}.`;
+      } else {
+        msg += `❌ Lamentablemente *no podré asistir*.`;
+      }
+
+      window.open(`https://wa.me/50259308553?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    window.onload = initSliders;
+  </script>
+</body>
+</html>
