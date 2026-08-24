@@ -257,7 +257,7 @@
     .family-box { background: var(--bg-champagne); padding: 25px 20px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
     .family-box h4 { font-family: var(--font-serif); color: var(--olive); font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase; }
     
-    /* ESTRUCTURA DE TARJETAS FLIP (GIRO) PARA LOS PADRES */
+    /* ESTRUCTURA DE TARJETAS FLIP (GIRO INDEPENDIENTE) */
     .parents-row-container {
       display: flex;
       justify-content: center;
@@ -272,16 +272,18 @@
       }
     }
 
-    /* Tarjeta contenedora 3D */
+    /* Contenedor principal de la tarjeta 3D */
     .flip-card {
       background-color: transparent;
       width: 260px;
       height: 250px;
-      perspective: 1000px; /* Efecto de profundidad 3D */
+      perspective: 1000px;
       cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* Elemento interno que realiza el giro */
+    /* Elemento interno que gira */
     .flip-card-inner {
       position: relative;
       width: 100%;
@@ -293,8 +295,7 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.06);
     }
 
-    /* Activación del giro con Hover o al dar Tap */
-    .flip-card:hover .flip-card-inner,
+    /* Estado cuando la tarjeta específica recibe el clic o toque */
     .flip-card.flipped .flip-card-inner {
       transform: rotateY(180deg);
     }
@@ -346,6 +347,9 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     /* Cara Posterior (Foto) */
@@ -444,7 +448,7 @@
       </p>
     </div>
 
-    <!-- PADRES Y PADRINOS CON TARJETAS INTERACTIVAS FLIP -->
+    <!-- PADRES Y PADRINOS CON TARJETAS INTERACTIVAS FLIP (GIRO CORTÉS) -->
     <div class="card">
       <div class="family-grid">
         <div class="family-box" style="grid-column: span 2;">
@@ -453,7 +457,7 @@
           <div class="parents-row-container">
             
             <!-- TARJETA FLIP: PADRES DE LA NOVIA -->
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card" onclick="toggleCardFlip(this)">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
                   <p class="parents-title">Padres de la Novia</p>
@@ -461,7 +465,7 @@
                     Alex Pérez<br>
                     Myra Morales
                   </p>
-                  <span class="flip-hint"><i class="fas fa-camera"></i> Foto</span>
+                  <span class="flip-hint"><i class="fas fa-camera"></i> Toca para ver foto</span>
                 </div>
                 <div class="flip-card-back">
                   <img src="padres-novia.jpg" alt="Padres de la Novia" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -475,7 +479,7 @@
             </div>
 
             <!-- TARJETA FLIP: PADRES DEL NOVIO (Poli.jpg) -->
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card" onclick="toggleCardFlip(this)">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
                   <p class="parents-title">Padres del Novio</p>
@@ -483,7 +487,7 @@
                     Roberto Ávila<br>
                     Polita Aragón
                   </p>
-                  <span class="flip-hint"><i class="fas fa-camera"></i> Foto</span>
+                  <span class="flip-hint"><i class="fas fa-camera"></i> Toca para ver foto</span>
                 </div>
                 <div class="flip-card-back">
                   <img src="Poli.jpeg" alt="Roberto Ávila y Polita Aragón">
@@ -628,6 +632,10 @@
   </div>
 
   <script>
+    function toggleCardFlip(cardElement) {
+      cardElement.classList.toggle('flipped');
+    }
+
     const guestsData = [
       { name: "Diego Ávila", passes: 2 },
       { name: "Juan Pérez", passes: 1 },
