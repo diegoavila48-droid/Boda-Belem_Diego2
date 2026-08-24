@@ -171,21 +171,25 @@
       margin: 0 auto;
     }
 
+    /* Líneas laterales con degradado suave hacia el centro */
     .header-date-line::before,
     .header-date-line::after {
       content: '';
       flex: 1;
       height: 1px;
-      background: var(--gold);
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
+    /* Estilos ajustados para permitir minúsculas y deshabilitar versalitas */
     .header-date-text {
       font-family: var(--font-serif);
       font-size: 1.4rem;
       letter-spacing: 3px;
       color: var(--gold);
       font-weight: 700;
-      text-transform: uppercase;
+      text-transform: none !important;
+      font-variant-caps: normal !important;
+      font-feature-settings: "lnum";
     }
 
     .card {
