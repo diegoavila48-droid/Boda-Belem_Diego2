@@ -181,10 +181,10 @@
 
     .header-date-text {
       font-family: var(--font-serif);
-      font-size: 1.05rem;
-      letter-spacing: 2.5px;
+      font-size: 1.4rem;
+      letter-spacing: 3px;
       color: var(--gold);
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
     }
 
@@ -222,114 +222,26 @@
       color: var(--navy-light);
     }
 
-    /* DRESS CODE */
-    .dresscode-slider-container {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-      margin: 20px 0;
-    }
-
-    .dresscode-card {
-      flex: 1;
-      min-width: 280px;
-      max-width: 350px;
-      background: var(--bg-cream);
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    /* VESTIMENTA */
+    .dresscode-container {
       display: flex;
       flex-direction: column;
-    }
-
-    .slider-image-wrapper {
-      position: relative;
-      width: 100%;
-      height: 480px;
-      overflow: hidden;
-      background: #E8E2DC;
-    }
-
-    .slider-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      transition: opacity 0.3s ease;
-    }
-
-    .slider-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(10, 25, 47, 0.75);
-      color: var(--gold-light);
-      border: 1px solid var(--gold);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      transition: background 0.3s, transform 0.2s;
+      margin: 20px 0 10px 0;
     }
 
-    .slider-btn:hover {
-      background: var(--navy);
-      transform: translateY(-50%) scale(1.1);
+    .dresscode-img {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
     }
 
-    .slider-btn.prev { left: 10px; }
-    .slider-btn.next { right: 10px; }
-
-    .slider-dots {
-      position: absolute;
-      bottom: 12px;
-      left: 0; right: 0;
-      display: flex;
-      justify-content: center;
-      gap: 5px;
-      z-index: 10;
-      padding: 0 10px;
-      flex-wrap: wrap;
-    }
-
-    .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      transition: background 0.3s, transform 0.3s;
-    }
-
-    .dot.active {
-      background: var(--gold);
-      transform: scale(1.4);
-    }
-
-    .dresscode-info {
-      padding: 18px 15px;
-      text-align: center;
-      background: #FFF;
-      flex-grow: 1;
-    }
-
-    .dresscode-title {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      color: var(--navy);
-      font-weight: 600;
-    }
-
-    .dresscode-desc {
-      font-size: 0.88rem;
-      color: #555;
-      margin-top: 6px;
-      line-height: 1.4;
+    .dresscode-details {
+      font-size: 1.05rem;
+      color: var(--navy-light);
+      line-height: 1.6;
     }
 
     .forbidden-colors {
@@ -340,8 +252,13 @@
     /* GENERALES */
     .family-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 20px; }
     @media(max-width: 600px) { .family-grid { grid-template-columns: 1fr; } }
-    .family-box { background: var(--bg-champagne); padding: 20px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
-    .family-box h4 { font-family: var(--font-serif); color: var(--olive); font-size: 1.3rem; margin-bottom: 10px; text-transform: uppercase; }
+    .family-box { background: var(--bg-champagne); padding: 25px 20px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
+    .family-box h4 { font-family: var(--font-serif); color: var(--olive); font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase; }
+    .parents-section { margin-bottom: 20px; }
+    .parents-section:last-child { margin-bottom: 0; }
+    .parents-title { font-weight: 600; color: var(--navy); font-size: 1.05rem; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+    .parents-names { font-size: 1.1rem; color: var(--navy-light); line-height: 1.5; }
+    
     .countdown-container { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
     .count-box { background: linear-gradient(145deg, #ffffff, var(--bg-champagne)); border: 1px solid var(--gold); padding: 15px; border-radius: 12px; min-width: 80px; box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
     .count-number { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 600; color: var(--navy); }
@@ -401,7 +318,7 @@
       <p class="header-subtitle">NOS CASAMOS</p>
       <h1 class="header-names">Belem & Diego</h1>
       <div class="header-date-line">
-        <span class="header-date-text">08 DE MAYO, 2027 • ANTIGUA GUATEMALA</span>
+        <span class="header-date-text">08 DE MAYO, 2027</span>
       </div>
     </header>
 
@@ -411,26 +328,41 @@
       </p>
     </div>
 
+    <!-- PADRES Y PADRINOS -->
     <div class="card">
-      <h2 class="section-title">Nuestros Padres y Padrinos</h2>
       <div class="family-grid">
-        <div class="family-box">
-          <h4>Padres de la Novia</h4>
-          <p>Alex Pérez</p>
-          <p>Myra Morales</p>
-        </div>
-        <div class="family-box">
-          <h4>Padres del Novio</h4>
-          <p>Roberto Ávila</p>
-          <p>Polita Aragón</p>
+        <div class="family-box" style="grid-column: span 2;">
+          <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 20px;">Nuestros Padres</h2>
+          
+          <div class="parents-section">
+            <p class="parents-title">Padres de la Novia</p>
+            <p class="parents-names">
+              Alex Pérez<br>
+              Myra Morales
+            </p>
+          </div>
+
+          <hr style="border: 0; border-top: 1px dashed rgba(212, 175, 55, 0.4); margin: 15px auto; width: 60%;">
+
+          <div class="parents-section">
+            <p class="parents-title">Padres del Novio</p>
+            <p class="parents-names">
+              Roberto Ávila<br>
+              Polita Aragón
+            </p>
+          </div>
         </div>
       </div>
-      <div style="margin-top: 30px;">
-        <h4 style="font-family: var(--font-serif); color: var(--olive); font-size: 1.3rem; text-transform: uppercase;">Padrinos de Honor</h4>
-        <p style="font-size: 1.15rem; color: var(--navy-light); margin-top: 5px;">Fausto Aragón y Luci Ruckwardt</p>
+      
+      <div class="family-grid" style="margin-top: 15px;">
+        <div class="family-box" style="grid-column: span 2;">
+          <h4>PADRINOS DE HONOR</h4>
+          <p style="font-size: 1.15rem; color: var(--navy-light);">Fausto Aragón y Luci Ruckwardt</p>
+        </div>
       </div>
     </div>
 
+    <!-- CUENTA REGRESIVA, CEREMONIA Y RECEPCIÓN -->
     <div class="card">
       <h2 class="section-title">Cuenta Regresiva</h2>
       <div class="countdown-container">
@@ -438,6 +370,29 @@
         <div class="count-box"><div id="hours" class="count-number">00</div><div class="count-label">Horas</div></div>
         <div class="count-box"><div id="minutes" class="count-number">00</div><div class="count-label">Minutos</div></div>
         <div class="count-box"><div id="seconds" class="count-number">00</div><div class="count-label">Segundos</div></div>
+      </div>
+
+      <hr style="border: 0; border-top: 1px solid rgba(212, 175, 55, 0.3); margin: 35px 0 25px 0;">
+
+      <!-- CEREMONIA -->
+      <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--olive); margin-bottom: 5px;">Ceremonia (14:30 hrs)</h3>
+      <p style="font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 5px;">Parroquia San José, Catedral de la Antigua Guatemala</p>
+      <p style="font-size: 0.95rem; color: #555; margin-bottom: 20px;">5a Calle Oriente 5, Antigua Guatemala</p>
+      <a href="https://maps.google.com/?q=Parroquia+San+Jose+Catedral+Antigua+Guatemala" target="_blank" class="btn"><i class="fas fa-map-marked-alt"></i> Abrir Ubicación</a>
+      
+      <hr style="border: 0; border-top: 1px dashed rgba(212, 175, 55, 0.4); margin: 35px auto; width: 60%;">
+
+      <!-- RECEPCIÓN -->
+      <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--olive); margin-bottom: 5px;">Recepción (17:00 hrs)</h3>
+      <p style="font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 5px;">Hotel Mestizo, Cortijo de las Flores</p>
+      <p style="font-size: 0.95rem; color: #555; margin-bottom: 20px;">0 calle 2-75, Ciudad Vieja 03012</p>
+      <a href="https://maps.google.com/?q=Hotel+Mestizo+Cortijo+de+las+Flores+Ciudad+Vieja" target="_blank" class="btn"><i class="fas fa-map-marked-alt"></i> Abrir Mapa</a>
+      
+      <!-- DISTINTIVO: RECEPCIÓN EXCLUSIVA PARA ADULTOS -->
+      <div>
+        <div class="adults-only-tag">
+          <i class="fas fa-glass-cheers"></i> Recepción Exclusiva para Adultos
+        </div>
       </div>
     </div>
 
@@ -458,28 +413,23 @@
         <div class="timeline-item">
           <p class="timeline-time">14:30 HRS</p>
           <p style="font-weight: 600; font-size: 1.1rem;">Santa Misa de Matrimonio</p>
-          <p style="font-size: 0.95rem; color: #555;">Catedral de Antigua Guatemala</p>
+          <p style="font-size: 0.95rem; color: #555;">Parroquia San José, Catedral de la Antigua Guatemala</p>
         </div>
         <div class="timeline-item">
           <p class="timeline-time">17:00 HRS</p>
           <p style="font-weight: 600; font-size: 1.1rem;">Recepción y Celebración</p>
-          <p style="font-size: 0.95rem; color: #555;">Cortijo de las Flores</p>
+          <p style="font-size: 0.95rem; color: #555;">Hotel Mestizo, Cortijo de las Flores</p>
         </div>
       </div>
     </div>
 
+    <!-- SECCIÓN DE HOSPEDAJE EXCLUSIVAMENTE -->
     <div class="card">
-      <h2 class="section-title">Ubicación y Hospedaje</h2>
-      <p style="font-size: 1.1rem; font-weight: 600;">Cortijo de las Flores</p>
-      <p style="font-size: 0.95rem; color: #666; margin-bottom: 20px;">Camino a Ciudad Vieja, Antigua Guatemala</p>
-      <a href="https://maps.google.com/?q=Cortijo+de+las+Flores+Antigua+Guatemala" target="_blank" class="btn"><i class="fas fa-map-marked-alt"></i> Abrir Mapa</a>
-      <div style="margin-top: 35px;">
-        <h4 style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--olive); margin-bottom: 10px;">Hoteles Sugeridos</h4>
-        <p>• Hotel Soleil La Antigua</p>
-        <p>• Hotel Museo Spa Casa Santo Domingo</p>
-      </div>
-      <div class="adults-only-tag">
-        <i class="fas fa-glass-cheers"></i> Recepción Exclusiva para Adultos
+      <h2 class="section-title">Hospedaje</h2>
+      <div style="margin-top: 10px;">
+        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--olive); margin-bottom: 15px;">Sugerencias de Hospedajes Aledaños</h3>
+        <p style="font-size: 1.1rem; line-height: 1.8;">• Hotel Soleil</p>
+        <p style="font-size: 1.1rem; line-height: 1.8;">• Hotel Westin Camino Real</p>
       </div>
     </div>
 
@@ -488,36 +438,12 @@
       <h2 class="section-title">Código de Vestimenta</h2>
       <p style="letter-spacing: 2px; font-weight: 600; color: var(--olive); margin-bottom: 20px;">FORMAL / ELEGANTE</p>
       
-      <div class="dresscode-slider-container">
-        
-        <!-- CABALLEROS -->
-        <div class="dresscode-card">
-          <div class="slider-image-wrapper">
-            <button class="slider-btn prev" onclick="changeSlide('men', -1)"><i class="fas fa-chevron-left"></i></button>
-            <img id="men-slide-img" src="" alt="Caballero Formal">
-            <button class="slider-btn next" onclick="changeSlide('men', 1)"><i class="fas fa-chevron-right"></i></button>
-            <div class="slider-dots" id="men-dots"></div>
-          </div>
-          <div class="dresscode-info">
-            <p class="dresscode-title">Caballeros</p>
-            <p class="dresscode-desc" id="men-slide-desc">Traje elegante o formal con corbata o corbatín.</p>
-          </div>
+      <div class="dresscode-container">
+        <img src="silueta.png" alt="Código de vestimenta formal" class="dresscode-img">
+        <div class="dresscode-details">
+          <p><strong>Caballeros:</strong> Traje Formal</p>
+          <p><strong>Damas:</strong> Vestido Formal Largo</p>
         </div>
-
-        <!-- DAMAS -->
-        <div class="dresscode-card">
-          <div class="slider-image-wrapper">
-            <button class="slider-btn prev" onclick="changeSlide('women', -1)"><i class="fas fa-chevron-left"></i></button>
-            <img id="women-slide-img" src="" alt="Dama Vestido Formal">
-            <button class="slider-btn next" onclick="changeSlide('women', 1)"><i class="fas fa-chevron-right"></i></button>
-            <div class="slider-dots" id="women-dots"></div>
-          </div>
-          <div class="dresscode-info">
-            <p class="dresscode-title">Damas</p>
-            <p class="dresscode-desc" id="women-slide-desc">Vestido formal largo o de gala elegante.</p>
-          </div>
-        </div>
-
       </div>
 
       <div class="forbidden-colors">
@@ -525,10 +451,11 @@
       </div>
     </div>
 
+    <!-- MESA DE REGALOS -->
     <div class="card">
       <h2 class="section-title">Mesa de Regalos</h2>
       <p style="margin-bottom: 20px; color: #555;">Tu presencia es nuestro mejor regalo. Si deseas realizarnos un presente:</p>
-      <a href="#" target="_blank" class="btn"><i class="fas fa-gift"></i> Ver Lista</a>
+      <a href="https://www.cemaco.com/list/BODAAVILAPEREZ08052027" target="_blank" class="btn"><i class="fas fa-gift"></i> Ver Lista en Cemaco</a>
     </div>
 
     <!-- RSVP -->
@@ -565,26 +492,6 @@
       { name: "Karen Zea", passes: 2 },
       { name: "Belem Pérez", passes: 2 }
     ];
-
-    const dressCodeData = {
-      men: [
-        { img: "traje1.jpg", desc: "Opción 1: Traje formal azul marino con corbata." },
-        { img: "traje2.jpg", desc: "Opción 2: Traje elegante gris oscuro de corte clásico." },
-        { img: "traje3.jpg", desc: "Opción 3: Traje formal negro con chaleco y corbatín." }
-      ],
-      women: [
-        { img: "vestido1.jpg", desc: "Opción 1: Vestido negro elegante de un hombro descubierto con detalle de encaje delicate en el borde." },
-        { img: "vestido2.jpg", desc: "Opción 2: Vestido largo amarillo Estilo asimétrico y dinámico, lleno de movimiento gracias a sus faldas plisadas en capas de diferentes alturas." },
-        { img: "vestido3.jpg", desc: "Opción 3: Vestido corte en A con una falda muy amplia y pliegues estructurados desde la cintura." },
-        { img: "vestido4.jpg", desc: "Opción 4: Vestido Escote asimétrico de un solo hombro con una delicada tira decorada con apliques de pedrería o cristales finos." },
-        { img: "vestido5.jpg", desc: "Opción 5: Vestido Escote en V pronunciado pero elegante, acompañado de mangas cortas tipo capa de encaje." },
-        { img: "vestido6.jpg", desc: "Opción 6: Vestido Corte a un hombro con un patrón geométrico de bordados dorados/plata en el pecho." },
-        { img: "vestido7.jpg", desc: "Opción 7: Vestido Escote caído o drapeado cowl neck muy elegante, sin mangas." },
-        { img: "vestido8.jpg", desc: "Opción 8: Vestido Un solo hombro con líneas cruzadas en patrón geométrico dorado sobre la pieza verde." },
-        { img: "vestido9.jpg", desc: "Opción 9: Vestido Asimétrico con una manga larga estructurada de un lado y una gran volante plisado volumétrico sobre el otro hombro." },
-        { img: "vestido10.jpg", desc: "Opción 10: Vestido tono café asimétrico de un solo hombro." }
-      ]
-    };
 
     const audio = document.getElementById('inviteAudio');
     const audioIcon = document.getElementById('audio-icon');
@@ -628,50 +535,6 @@
         document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
       }
     }, 1000);
-
-    let menIndex = 0, womenIndex = 0;
-
-    function initSliders() {
-      updateSlide('men', 0);
-      updateSlide('women', 0);
-      createDots('men-dots', dressCodeData.men.length, 'men');
-      createDots('women-dots', dressCodeData.women.length, 'women');
-    }
-
-    function changeSlide(type, direction) {
-      if (type === 'men') {
-        menIndex = (menIndex + direction + dressCodeData.men.length) % dressCodeData.men.length;
-        updateSlide('men', menIndex);
-      } else {
-        womenIndex = (womenIndex + direction + dressCodeData.women.length) % dressCodeData.women.length;
-        updateSlide('women', womenIndex);
-      }
-    }
-
-    function updateSlide(type, index) {
-      const data = dressCodeData[type][index];
-      document.getElementById(`${type}-slide-img`).src = data.img;
-      document.getElementById(`${type}-slide-desc`).innerText = data.desc;
-      updateDots(`${type}-dots`, index);
-    }
-
-    function createDots(containerId, count, type) {
-      const container = document.getElementById(containerId);
-      for (let i = 0; i < count; i++) {
-        const dot = document.createElement('span');
-        dot.className = `dot ${i === 0 ? 'active' : ''}`;
-        dot.onclick = () => {
-          if (type === 'men') menIndex = i; else womenIndex = i;
-          updateSlide(type, i);
-        };
-        container.appendChild(dot);
-      }
-    }
-
-    function updateDots(containerId, activeIndex) {
-      const dots = document.querySelectorAll(`#${containerId} .dot`);
-      dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
-    }
 
     let selectedGuest = null;
 
@@ -722,8 +585,6 @@
 
       window.open(`https://wa.me/50259308553?text=${encodeURIComponent(msg)}`, '_blank');
     }
-
-    window.onload = initSliders;
   </script>
 </body>
 </html>
