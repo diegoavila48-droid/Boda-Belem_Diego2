@@ -171,7 +171,6 @@
       margin: 0 auto;
     }
 
-    /* Líneas laterales con degradado suave hacia el centro */
     .header-date-line::before,
     .header-date-line::after {
       content: '';
@@ -180,7 +179,6 @@
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
-    /* Estilos ajustados para permitir minúsculas y deshabilitar versalitas */
     .header-date-text {
       font-family: var(--font-serif);
       font-size: 1.4rem;
@@ -226,6 +224,47 @@
       color: var(--navy-light);
     }
 
+    /* ESTILOS PARA PADRES Y PADRINOS */
+    .family-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 20px; }
+    .family-box { background: var(--bg-champagne); padding: 25px 20px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
+    .family-box h4 { font-family: var(--font-serif); color: var(--olive); font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase; }
+
+    /* Estructura en 2 columnas para los Padres */
+    .parents-grid {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      gap: 20px;
+      position: relative;
+    }
+
+    .parents-column {
+      flex: 1;
+      text-align: center;
+    }
+
+    .parents-divider {
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      align-self: stretch;
+    }
+
+    /* Clase con text-transform: none para respetar minúsculas exactas */
+    .parents-title {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      text-transform: none !important;
+      letter-spacing: 0.5px;
+    }
+
+    .parents-names {
+      font-size: 1.1rem;
+      color: var(--navy-light);
+      line-height: 1.6;
+    }
+
     /* VESTIMENTA */
     .dresscode-container {
       display: flex;
@@ -254,15 +293,6 @@
     }
 
     /* GENERALES */
-    .family-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 20px; }
-    @media(max-width: 600px) { .family-grid { grid-template-columns: 1fr; } }
-    .family-box { background: var(--bg-champagne); padding: 25px 20px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
-    .family-box h4 { font-family: var(--font-serif); color: var(--olive); font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase; }
-    .parents-section { margin-bottom: 20px; }
-    .parents-section:last-child { margin-bottom: 0; }
-    .parents-title { font-weight: 600; color: var(--navy); font-size: 1.05rem; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
-    .parents-names { font-size: 1.1rem; color: var(--navy-light); line-height: 1.5; }
-    
     .countdown-container { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
     .count-box { background: linear-gradient(145deg, #ffffff, var(--bg-champagne)); border: 1px solid var(--gold); padding: 15px; border-radius: 12px; min-width: 80px; box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
     .count-number { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 600; color: var(--navy); }
@@ -335,31 +365,36 @@
     <!-- PADRES Y PADRINOS -->
     <div class="card">
       <div class="family-grid">
-        <div class="family-box" style="grid-column: span 2;">
-          <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 20px;">Nuestros Padres</h2>
+        <div class="family-box">
+          <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 25px;">Nuestros Padres</h2>
           
-          <div class="parents-section">
-            <p class="parents-title">Novia</p>
-            <p class="parents-names">
-              Alex Pérez<br>
-              Myra Morales
-            </p>
-          </div>
+          <div class="parents-grid">
+            <!-- Columna Novia -->
+            <div class="parents-column">
+              <p class="parents-title">Padres de la novia</p>
+              <p class="parents-names">
+                Alex Perez<br>
+                Myra Morales
+              </p>
+            </div>
 
-          <hr style="border: 0; border-top: 1px dashed rgba(212, 175, 55, 0.4); margin: 15px auto; width: 60%;">
+            <!-- Separador vertical -->
+            <div class="parents-divider"></div>
 
-          <div class="parents-section">
-            <p class="parents-title">Novio</p>
-            <p class="parents-names">
-              Roberto Ávila<br>
-              Polita Aragón
-            </p>
+            <!-- Columna Novio -->
+            <div class="parents-column">
+              <p class="parents-title">Padres del novio</p>
+              <p class="parents-names">
+                Roberto Avila<br>
+                Polita Aragon
+              </p>
+            </div>
           </div>
         </div>
       </div>
       
       <div class="family-grid" style="margin-top: 15px;">
-        <div class="family-box" style="grid-column: span 2;">
+        <div class="family-box">
           <h4>PADRINOS DE HONOR</h4>
           <p style="font-size: 1.15rem; color: var(--navy-light);">Fausto Aragón <br>
             Lucy Ruckwardt</p>
