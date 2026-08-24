@@ -465,7 +465,7 @@
                     Alex Pérez<br>
                     Myra Morales
                   </p>
-                  <span class="flip-hint"><i class="fas fa-camera"></i> Toca para ver foto</span>
+                  <span class="flip-hint"><i class="fas fa-camera"></i> Foto</span>
                 </div>
                 <div class="flip-card-back">
                   <img src="padres-novia.jpg" alt="Padres de la Novia" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -487,7 +487,7 @@
                     Roberto Ávila<br>
                     Polita Aragón
                   </p>
-                  <span class="flip-hint"><i class="fas fa-camera"></i> Toca para ver foto</span>
+                  <span class="flip-hint"><i class="fas fa-camera"></i> Foto</span>
                 </div>
                 <div class="flip-card-back">
                   <img src="Poli.jpeg" alt="Roberto Ávila y Polita Aragón">
@@ -572,8 +572,9 @@
 
     <!-- SECCIÓN DE HOSPEDAJE EXCLUSIVAMENTE -->
     <div class="card">
-      <h2 class="section-title">Sugerencias de Hospedajes Aledaños</h2>
+      <h2 class="section-title">Hospedaje</h2>
       <div style="margin-top: 10px;">
+        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--olive); margin-bottom: 15px;">Sugerencias de Hospedajes Aledaños</h3>
         <p style="font-size: 1.1rem; line-height: 1.8;">• Hotel Soleil</p>
         <p style="font-size: 1.1rem; line-height: 1.8;">• Hotel Westin Camino Real</p>
       </div>
@@ -647,22 +648,39 @@
     const audioIcon = document.getElementById('audio-icon');
     let isPlaying = false;
 
+    // Función para reproducir el audio
+    function playAudio() {
+      if (!isPlaying) {
+        audio.play().then(() => {
+          isPlaying = true;
+          audioIcon.classList.replace('fa-play', 'fa-pause');
+        }).catch(e => {
+          console.log("Autoplay bloqueado hasta interacción:", e);
+        });
+      }
+    }
+
+    // Intentar reproducir música inmediatamente al cargar la pantalla del sobre
+    window.addEventListener('DOMContentLoaded', () => {
+      playAudio();
+    });
+
+    // Como respaldo contra bloqueos de reproducción automática del navegador:
+    // Al tocar cualquier parte de la pantalla inicial se inicia el audio de inmediato.
+    document.addEventListener('click', () => {
+      playAudio();
+    }, { once: true });
+
+    document.addEventListener('touchstart', () => {
+      playAudio();
+    }, { once: true });
+
     function openEnvelope() {
+      playAudio();
       document.getElementById('envelope-screen').style.opacity = '0';
       document.getElementById('envelope-screen').style.visibility = 'hidden';
       document.getElementById('main-invitation').classList.add('visible');
-      
-      playAudio();
       window.scrollTo(0, 0);
-    }
-
-    function playAudio() {
-      audio.play().then(() => {
-        isPlaying = true;
-        audioIcon.classList.replace('fa-play', 'fa-pause');
-      }).catch(e => {
-        console.log("Autoplay bloqueado por el navegador:", e);
-      });
     }
 
     function toggleAudio() {
