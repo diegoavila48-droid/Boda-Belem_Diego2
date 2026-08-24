@@ -224,47 +224,6 @@
       color: var(--navy-light);
     }
 
-    /* ESTILOS PARA PADRES Y PADRINOS */
-    .family-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 20px; }
-    .family-box { background: var(--bg-champagne); padding: 25px 20px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
-    .family-box h4 { font-family: var(--font-serif); color: var(--olive); font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase; }
-
-    /* Estructura en 2 columnas para los Padres */
-    .parents-grid {
-      display: flex;
-      justify-content: space-around;
-      align-items: flex-start;
-      gap: 20px;
-      position: relative;
-    }
-
-    .parents-column {
-      flex: 1;
-      text-align: center;
-    }
-
-    .parents-divider {
-      width: 1px;
-      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-      align-self: stretch;
-    }
-
-    /* Clase con text-transform: none para respetar minúsculas exactas */
-    .parents-title {
-      font-weight: 600;
-      color: var(--navy);
-      font-size: 1.05rem;
-      margin-bottom: 10px;
-      text-transform: none !important;
-      letter-spacing: 0.5px;
-    }
-
-    .parents-names {
-      font-size: 1.1rem;
-      color: var(--navy-light);
-      line-height: 1.6;
-    }
-
     /* VESTIMENTA */
     .dresscode-container {
       display: flex;
@@ -292,7 +251,130 @@
       border-radius: 10px; color: #C62828; font-weight: 500; margin-top: 20px;
     }
 
-    /* GENERALES */
+    /* GENERALES Y PADRINOS */
+    .family-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 20px; }
+    @media(max-width: 600px) { .family-grid { grid-template-columns: 1fr; } }
+    .family-box { background: var(--bg-champagne); padding: 25px 20px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
+    .family-box h4 { font-family: var(--font-serif); color: var(--olive); font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase; }
+    
+    /* ESTRUCTURA DE TARJETAS FLIP (GIRO) PARA LOS PADRES */
+    .parents-row-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+    }
+    
+    @media(max-width: 650px) {
+      .parents-row-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Tarjeta contenedora 3D */
+    .flip-card {
+      background-color: transparent;
+      width: 260px;
+      height: 250px;
+      perspective: 1000px; /* Efecto de profundidad 3D */
+      cursor: pointer;
+    }
+
+    /* Elemento interno que realiza el giro */
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+      transform-style: preserve-3d;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    /* Activación del giro con Hover o al dar Tap */
+    .flip-card:hover .flip-card-inner,
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    /* Caras Frontal y Posterior */
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+    }
+
+    /* Cara Frontal */
+    .flip-card-front {
+      background: #FFFFFF;
+      color: var(--navy);
+    }
+
+    .flip-card-front .parents-title {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .flip-card-front .parents-names {
+      font-size: 1.15rem;
+      color: var(--navy-light);
+      line-height: 1.6;
+      font-family: var(--font-serif);
+      font-weight: 600;
+    }
+
+    .flip-hint {
+      margin-top: 15px;
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* Cara Posterior (Foto) */
+    .flip-card-back {
+      background: var(--navy);
+      color: white;
+      transform: rotateY(180deg);
+      padding: 0;
+    }
+
+    .flip-card-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .flip-card-back .photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(0deg, rgba(10,25,47,0.85) 0%, transparent 100%);
+      color: #fff;
+      font-family: var(--font-title);
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
     .countdown-container { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
     .count-box { background: linear-gradient(145deg, #ffffff, var(--bg-champagne)); border: 1px solid var(--gold); padding: 15px; border-radius: 12px; min-width: 80px; box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
     .count-number { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 600; color: var(--navy); }
@@ -362,39 +444,60 @@
       </p>
     </div>
 
-    <!-- PADRES Y PADRINOS -->
+    <!-- PADRES Y PADRINOS CON TARJETAS INTERACTIVAS FLIP -->
     <div class="card">
       <div class="family-grid">
-        <div class="family-box">
-          <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 25px;">Nuestros Padres</h2>
+        <div class="family-box" style="grid-column: span 2;">
+          <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 20px;">Nuestros Padres</h2>
           
-          <div class="parents-grid">
-            <!-- Columna Novia -->
-            <div class="parents-column">
-              <p class="parents-title">Padres de la novia</p>
-              <p class="parents-names">
-                Alex Perez<br>
-                Myra Morales
-              </p>
+          <div class="parents-row-container">
+            
+            <!-- TARJETA FLIP: PADRES DE LA NOVIA -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <p class="parents-title">Padres de la Novia</p>
+                  <p class="parents-names">
+                    Alex Pérez<br>
+                    Myra Morales
+                  </p>
+                  <span class="flip-hint"><i class="fas fa-camera"></i> Foto</span>
+                </div>
+                <div class="flip-card-back">
+                  <img src="padres-novia.jpg" alt="Padres de la Novia" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                  <div style="display:none; width:100%; height:100%; background:var(--bg-champagne); color:var(--navy); flex-direction:column; justify-content:center; align-items:center; padding:10px;">
+                    <i class="fas fa-heart" style="color:var(--gold); font-size:2rem; margin-bottom:10px;"></i>
+                    <p style="font-family:var(--font-serif); font-weight:600;">Alex & Myra</p>
+                  </div>
+                  <div class="photo-overlay">Alex & Myra</div>
+                </div>
+              </div>
             </div>
 
-            <!-- Separador vertical -->
-            <div class="parents-divider"></div>
-
-            <!-- Columna Novio -->
-            <div class="parents-column">
-              <p class="parents-title">Padres del novio</p>
-              <p class="parents-names">
-                Roberto Avila<br>
-                Polita Aragon
-              </p>
+            <!-- TARJETA FLIP: PADRES DEL NOVIO (Poli.jpg) -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <p class="parents-title">Padres del Novio</p>
+                  <p class="parents-names">
+                    Roberto Ávila<br>
+                    Polita Aragón
+                  </p>
+                  <span class="flip-hint"><i class="fas fa-camera"></i> Foto</span>
+                </div>
+                <div class="flip-card-back">
+                  <img src="Poli.jpg" alt="Roberto Ávila y Polita Aragón">
+                  <div class="photo-overlay">Roberto & Polita</div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
       
       <div class="family-grid" style="margin-top: 15px;">
-        <div class="family-box">
+        <div class="family-box" style="grid-column: span 2;">
           <h4>PADRINOS DE HONOR</h4>
           <p style="font-size: 1.15rem; color: var(--navy-light);">Fausto Aragón <br>
             Lucy Ruckwardt</p>
