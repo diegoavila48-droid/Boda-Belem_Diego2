@@ -255,7 +255,7 @@
     .family-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 20px; }
     @media(max-width: 600px) { .family-grid { grid-template-columns: 1fr; } }
     .family-box { background: var(--bg-champagne); padding: 25px 20px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
-    .family-box h4 { font-family: var(--font-serif); color: var(--olive); font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase; }
+    .family-box h4 { font-family: var(--font-serif); color: var(--olive); font-size: 1.3rem; margin-bottom: 12px; }
     
     /* ESTRUCTURA DE TARJETAS FLIP (GIRO INDEPENDIENTE) */
     .parents-row-container {
@@ -328,7 +328,6 @@
       color: var(--navy);
       font-size: 1.05rem;
       margin-bottom: 12px;
-      text-transform: uppercase;
       letter-spacing: 1px;
     }
 
@@ -345,7 +344,6 @@
       font-size: 0.75rem;
       color: var(--gold);
       letter-spacing: 1px;
-      text-transform: uppercase;
       font-weight: 500;
       display: flex;
       align-items: center;
@@ -382,7 +380,7 @@
     .countdown-container { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
     .count-box { background: linear-gradient(145deg, #ffffff, var(--bg-champagne)); border: 1px solid var(--gold); padding: 15px; border-radius: 12px; min-width: 80px; box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
     .count-number { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 600; color: var(--navy); }
-    .count-label { font-size: 0.75rem; text-transform: uppercase; color: var(--olive); }
+    .count-label { font-size: 0.75rem; color: var(--olive); }
     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
     .gallery-grid img { width: 100%; height: 260px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.4s ease; }
     .gallery-grid img:hover { transform: scale(1.05); }
@@ -460,7 +458,7 @@
             <div class="flip-card" onclick="toggleCardFlip(this)">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <p class="parents-title">Padres de la Novia</p>
+                  <p class="parents-title">Padres de la novia</p>
                   <p class="parents-names">
                     Alex Pérez<br>
                     Myra Morales
@@ -478,11 +476,11 @@
               </div>
             </div>
 
-            <!-- TARJETA FLIP: PADRES DEL NOVIO (Poli.jpg) -->
+            <!-- TARJETA FLIP: PADRES DEL NOVIO -->
             <div class="flip-card" onclick="toggleCardFlip(this)">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <p class="parents-title">Padres del Novio</p>
+                  <p class="parents-title">Padres del novio</p>
                   <p class="parents-names">
                     Roberto Ávila<br>
                     Polita Aragón
@@ -502,7 +500,7 @@
       
       <div class="family-grid" style="margin-top: 15px;">
         <div class="family-box" style="grid-column: span 2;">
-          <h4>PADRINOS DE HONOR</h4>
+          <h4>Padrinos de honor</h4>
           <p style="font-size: 1.15rem; color: var(--navy-light);">Fausto Aragón <br>
             Lucy Ruckwardt</p>
         </div>
@@ -558,12 +556,12 @@
       <h2 class="section-title">Cronograma</h2>
       <div class="timeline">
         <div class="timeline-item">
-          <p class="timeline-time">14:30 HRS</p>
+          <p class="timeline-time">14:30 hrs</p>
           <p style="font-weight: 600; font-size: 1.1rem;">Santa Misa de Matrimonio</p>
           <p style="font-size: 0.95rem; color: #555;">Parroquia San José, Catedral de la Antigua Guatemala</p>
         </div>
         <div class="timeline-item">
-          <p class="timeline-time">17:00 HRS</p>
+          <p class="timeline-time">17:00 hrs</p>
           <p style="font-weight: 600; font-size: 1.1rem;">Recepción y Celebración</p>
           <p style="font-size: 0.95rem; color: #555;">Hotel Mestizo, Cortijo de las Flores</p>
         </div>
