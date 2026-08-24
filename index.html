@@ -222,14 +222,6 @@
       color: var(--navy-light);
     }
 
-    /* SPOTIFY CONTAINER */
-    .spotify-wrapper {
-      margin-top: 15px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    }
-
     /* DRESS CODE */
     .dresscode-slider-container {
       display: flex;
@@ -380,8 +372,9 @@
   <button class="audio-control" onclick="toggleAudio()" title="Control de Música">
     <i id="audio-icon" class="fas fa-play"></i>
   </button>
-  <audio id="inviteAudio" loop>
-    <source src="boda_music.mp3" type="audio/mpeg">
+  <audio id="inviteAudio" loop preload="auto">
+    <source src="fonseca.mp3" type="audio/mpeg">
+    <source src="fonseca.MP3" type="audio/mpeg">
     Tu navegador no soporta audio HTML5.
   </audio>
 
@@ -402,7 +395,7 @@
     <header>
       <div class="arch-frame-wrapper">
         <div class="arch-frame">
-          <img src="cover.jpg" alt="Belem y Diego">
+          <img src="cover.jpeg" alt="Belem y Diego">
         </div>
       </div>
       <p class="header-subtitle">NOS CASAMOS</p>
@@ -416,14 +409,6 @@
       <p class="legend-text">
         "El amor no se mira con los ojos, sino con el corazón. Hoy decidimos unir nuestras vidas y caminar de la mano por el resto de nuestros días. Nos encantaría que seas testigo y parte de este inicio."
       </p>
-    </div>
-
-    <!-- WIDGET DE SPOTIFY REPRODUCTOR DIRECTO -->
-    <div class="card">
-      <h2 class="section-title">Nuestra Canción</h2>
-      <div class="spotify-wrapper">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0IWBTieCc6wQZ0C4kCHP9q?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
     </div>
 
     <div class="card">
@@ -459,11 +444,11 @@
     <div class="card">
       <h2 class="section-title">Galería de Recuerdos</h2>
       <div class="gallery-grid">
-        <img src="gallery1.jpg" alt="Recuerdo 1">
-        <img src="gallery2.jpg" alt="Recuerdo 2">
-        <img src="gallery3.jpg" alt="Recuerdo 3">
-        <img src="gallery4.jpg" alt="Recuerdo 4">
-        <img src="gallery5.jpg" alt="Recuerdo 5">
+        <img src="gallery1.jpeg" alt="Recuerdo 1">
+        <img src="gallery2.jpeg" alt="Recuerdo 2">
+        <img src="gallery3.jpeg" alt="Recuerdo 3">
+        <img src="gallery4.jpeg" alt="Recuerdo 4">
+        <img src="gallery5.jpeg" alt="Recuerdo 5">
       </div>
     </div>
 
@@ -577,6 +562,7 @@
       { name: "Diego Ávila", passes: 2 },
       { name: "Juan Pérez", passes: 1 },
       { name: "Luis Díaz", passes: 2 },
+      { name: "Karen Zea", passes: 2 },
       { name: "Belem Pérez", passes: 2 }
     ];
 
@@ -587,16 +573,16 @@
         { img: "traje3.jpg", desc: "Opción 3: Traje formal negro con chaleco y corbatín." }
       ],
       women: [
-        { img: "vestido1.jpg", desc: "Opción 1: Vestido púrpura elegante de un hombro con volantes en corte asimétrico." },
-        { img: "vestido2.jpg", desc: "Opción 2: Vestido largo amarillo gold de un hombro con peplum y falda con capas." },
-        { img: "vestido3.jpg", desc: "Opción 3: Vestido plata brillante estilo sirena con detalles bordados en escote." },
-        { img: "vestido4.jpg", desc: "Opción 4: Vestido largo bronce satinado con detalles bordados y falda asimétrica." },
-        { img: "vestido5.jpg", desc: "Opción 5: Vestido negro elegante de escote asimétrico con detalle plateado en cintura." },
-        { img: "vestido6.jpg", desc: "Opción 6: Vestido largo azul terciopelo de escote fluido con broche brillante." },
-        { img: "vestido7.jpg", desc: "Opción 7: Vestido de fiesta rosa palo con escote ilusión y falda amplificada." },
-        { img: "vestido8.jpg", desc: "Opción 8: Vestido largo azul marino satinado de corte A con detalles en escote." },
-        { img: "vestido9.jpg", desc: "Opción 9: Vestido largo verde esmeralda con pedrería en torso y falda fluida." },
-        { img: "vestido10.jpg", desc: "Opción 10: Vestido largo elegante ideal para gala nocturna." }
+        { img: "vestido1.jpg", desc: "Opción 1: Vestido negro elegante de un hombro descubierto con detalle de encaje delicate en el borde." },
+        { img: "vestido2.jpg", desc: "Opción 2: Vestido largo amarillo Estilo asimétrico y dinámico, lleno de movimiento gracias a sus faldas plisadas en capas de diferentes alturas." },
+        { img: "vestido3.jpg", desc: "Opción 3: Vestido corte en A con una falda muy amplia y pliegues estructurados desde la cintura." },
+        { img: "vestido4.jpg", desc: "Opción 4: Vestido Escote asimétrico de un solo hombro con una delicada tira decorada con apliques de pedrería o cristales finos." },
+        { img: "vestido5.jpg", desc: "Opción 5: Vestido Escote en V pronunciado pero elegante, acompañado de mangas cortas tipo capa de encaje." },
+        { img: "vestido6.jpg", desc: "Opción 6: Vestido Corte a un hombro con un patrón geométrico de bordados dorados/plata en el pecho." },
+        { img: "vestido7.jpg", desc: "Opción 7: Vestido Escote caído o drapeado cowl neck muy elegante, sin mangas." },
+        { img: "vestido8.jpg", desc: "Opción 8: Vestido Un solo hombro con líneas cruzadas en patrón geométrico dorado sobre la pieza verde." },
+        { img: "vestido9.jpg", desc: "Opción 9: Vestido Asimétrico con una manga larga estructurada de un lado y una gran volante plisado volumétrico sobre el otro hombro." },
+        { img: "vestido10.jpg", desc: "Opción 10: Vestido tono café asimétrico de un solo hombro." }
       ]
     };
 
@@ -608,19 +594,28 @@
       document.getElementById('envelope-screen').style.opacity = '0';
       document.getElementById('envelope-screen').style.visibility = 'hidden';
       document.getElementById('main-invitation').classList.add('visible');
-      toggleAudio();
+      
+      playAudio();
       window.scrollTo(0, 0);
+    }
+
+    function playAudio() {
+      audio.play().then(() => {
+        isPlaying = true;
+        audioIcon.classList.replace('fa-play', 'fa-pause');
+      }).catch(e => {
+        console.log("Autoplay bloqueado por el navegador:", e);
+      });
     }
 
     function toggleAudio() {
       if (isPlaying) {
         audio.pause();
         audioIcon.classList.replace('fa-pause', 'fa-play');
+        isPlaying = false;
       } else {
-        audio.play().catch(e => console.log("Autoplay bloqueado"));
-        audioIcon.classList.replace('fa-play', 'fa-pause');
+        playAudio();
       }
-      isPlaying = !isPlaying;
     }
 
     const targetDate = new Date('May 08, 2027 14:30:00').getTime();
@@ -694,6 +689,8 @@
       }
     }
 
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwNPRjPDqaLLr2nxaT5f2XHBB865bY9Aa_c7oO_V4mbyaDvAuQmbDfWHdMos_WuSkGX/exec";
+    
     function sendRSVP(e) {
       e.preventDefault();
       const name = document.getElementById('guestSearch').value;
@@ -701,6 +698,19 @@
       
       const attendance = document.getElementById('attendance').value;
       const companion = document.getElementById('companionName').value;
+
+      const payload = {
+        name: name,
+        attendance: attendance,
+        companion: companion
+      };
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(err => console.error("Error guardando en Drive:", err));
       
       let msg = `Hola Belem y Diego, soy *${name}*.\n`;
       if (attendance === 'asistiré') {
