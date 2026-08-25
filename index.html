@@ -59,14 +59,13 @@
       100% { background-position: 220px 440px, -220px 220px, 440px -220px; }
     }
 
-    /* PANTALLA INICIAL (SOBRE UN SOLO CLIC) */
     #envelope-screen {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       background: radial-gradient(circle at 50% 40%, #FAF4EF 0%, #B8AA9C 100%);
       display: flex; justify-content: center; align-items: center;
       z-index: 2000;
-      transition: opacity 3s ease, visibility 3s;
+      transition: opacity 2s ease, visibility 2s;
     }
 
     .envelope-wrapper {
@@ -124,7 +123,6 @@
     }
     .audio-control:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(197, 160, 89, 0.8); }
 
-    /* TRANSICIÓN DE 5 SEGUNDOS DE ENTRADA */
     #main-invitation {
       position: relative;
       z-index: 2;
@@ -172,7 +170,6 @@
       letter-spacing: 1px;
     }
 
-    /* EFECTO DE BRILLO/RESPLANDOR EN FOTOS Y AUMENTO 40% */
     @keyframes photoGlow {
       0% {
         box-shadow: 0 0 15px rgba(197, 160, 89, 0.4), 0 0 25px rgba(247, 229, 169, 0.2);
@@ -219,7 +216,7 @@
     }
 
     .arch-frame:hover img {
-      transform: scale(1.4); /* Aumento 40% */
+      transform: scale(1.4);
       filter: brightness(1.1);
     }
 
@@ -262,10 +259,10 @@
     .header-date-text {
       font-family: var(--font-serif);
       font-size: 1.4rem;
-      letter-spacing: 4px;
+      letter-spacing: 2px;
       color: var(--gold-royal);
-      font-weight: 700;
-      text-transform: uppercase;
+      font-weight: 600;
+      text-transform: lowercase; /* Mantiene minúsculas */
     }
 
     .card {
@@ -338,32 +335,14 @@
       background: linear-gradient(90deg, var(--gold-royal), transparent);
     }
 
-    .gold-drop-cap {
-      font-family: var(--font-crest);
-      font-size: 4.8rem;
-      float: left;
-      line-height: 0.75;
-      margin-right: 12px;
-      margin-top: 4px;
-      background: linear-gradient(
-        135deg, 
-        #BF953F 0%, 
-        #FCF6BA 25%, 
-        #B38728 50%, 
-        #FBF5B7 75%, 
-        #AA771C 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(2px 3px 3px rgba(0, 0, 0, 0.25)) drop-shadow(0px 0px 8px rgba(247, 229, 169, 0.6));
-    }
-
-    .legend-text {
+    /* ESTILO CENTRADO PARA EL TEXTO Y LEYENDA Principal */
+    .legend-text-centered {
       font-family: var(--font-serif);
-      font-size: 1.5rem; font-style: italic; line-height: 1.85;
+      font-size: 1.5rem; 
+      font-style: italic; 
+      line-height: 1.8;
       color: var(--navy-light);
-      text-align: justify;
-      text-justify: inter-word;
+      text-align: center;
     }
 
     .dresscode-container {
@@ -523,7 +502,6 @@
     .count-number { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 600; color: var(--navy-royal); }
     .count-label { font-family: var(--font-serif); font-size: 0.9rem; color: var(--gold-dark); }
     
-    /* GALERÍA DE FOTOS CON BRILLO RESPLANDECIENTE Y AUMENTO DEL 40% */
     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
     
     .gallery-item {
@@ -549,7 +527,7 @@
     }
 
     .gallery-item:hover img { 
-      transform: scale(1.4); /* Aumento 40% */
+      transform: scale(1.4);
       filter: brightness(1.12);
     }
 
@@ -591,7 +569,7 @@
     Tu navegador no soporta audio HTML5.
   </audio>
 
-  <!-- PANTALLA INICIAL (SOBRE UN SOLO CLIC) -->
+  <!-- PANTALLA INICIAL DE ENTRADA -->
   <div id="envelope-screen" onclick="openEnvelope()">
     <div class="envelope-wrapper">
       <img src="sobre.jpg" alt="Sobre de Invitación Belem y Diego" id="envelope-img">
@@ -602,7 +580,7 @@
     </div>
   </div>
 
-  <!-- INVITACIÓN PRINCIPAL CON ENTRADA PROGRESIVA DE 5 SEGUNDOS -->
+  <!-- INVITACIÓN PRINCIPAL -->
   <div id="main-invitation">
     
     <header>
@@ -619,6 +597,7 @@
       <p class="header-subtitle">NUESTRA BODA</p>
       <h1 class="header-names">Belem & Diego</h1>
       <div class="header-date-line">
+        <!-- CORREGIDO: FECHA EN MINÚSCULAS -->
         <span class="header-date-text">08 de mayo, 2027</span>
       </div>
     </header>
@@ -629,8 +608,10 @@
       <div class="corner-ornament corner-bl"></div>
       <div class="corner-ornament corner-br"></div>
       
-      <p class="legend-text">
-        <span class="gold-drop-cap">E</span>l amor no se mira con los ojos, sino con el corazón. Hoy decidimos unir nuestras vidas y caminar de la mano por el resto de nuestros días. Nos encantaría que seas testigo y parte de este inicio.
+      <!-- CORREGIDO: FRASE CENTRADA Y CON SALTO DE LÍNEA TRAS "NUESTROS DÍAS" -->
+      <p class="legend-text-centered">
+        El amor no se mira con los ojos, sino con el corazón. Hoy decidimos unir nuestras vidas y caminar de la mano por el resto de nuestros días.<br>
+        Nos encantaría que seas testigo y parte de este inicio.
       </p>
     </div>
 
@@ -734,7 +715,6 @@
       </div>
     </div>
 
-    <!-- GALERÍA DE FOTOS CON BRILLO RESPLANDECIENTE -->
     <div class="card">
       <div class="corner-ornament corner-tl"></div>
       <div class="corner-ornament corner-tr"></div>
@@ -753,13 +733,14 @@
       </div>
     </div>
 
+    <!-- CORREGIDO: SE CAMBIÓ ITINERARIO POR CRONOGRAMA -->
     <div class="card">
       <div class="corner-ornament corner-tl"></div>
       <div class="corner-ornament corner-tr"></div>
       <div class="corner-ornament corner-bl"></div>
       <div class="corner-ornament corner-br"></div>
 
-      <h2 class="section-title">Itinerario</h2>
+      <h2 class="section-title">Cronograma</h2>
       <div class="royal-divider"><i class="fas fa-clock"></i></div>
 
       <div class="timeline">
@@ -776,13 +757,14 @@
       </div>
     </div>
 
+    <!-- SECCIÓN HOSPEDAJE LISTA PARA ADAPTAR -->
     <div class="card">
       <div class="corner-ornament corner-tl"></div>
       <div class="corner-ornament corner-tr"></div>
       <div class="corner-ornament corner-bl"></div>
       <div class="corner-ornament corner-br"></div>
 
-      <h2 class="section-title">Hospedaje</h2>
+      <h2 class="section-title">Sugerencias de Hospedajes Aledaños</h2>
       <div class="royal-divider"><i class="fas fa-hotel"></i></div>
 
       <div style="margin-top: 10px; font-family: var(--font-serif); font-size: 1.3rem;">
@@ -791,6 +773,7 @@
       </div>
     </div>
 
+    <!-- CORREGIDO: CAMBIO A ELEGANTE -->
     <div class="card">
       <div class="corner-ornament corner-tl"></div>
       <div class="corner-ornament corner-tr"></div>
@@ -800,10 +783,10 @@
       <h2 class="section-title">Código de Vestimenta</h2>
       <div class="royal-divider"><i class="fas fa-user-tie"></i></div>
 
-      <p style="font-family: var(--font-serif); letter-spacing: 4px; font-weight: 700; color: var(--gold-dark); margin-bottom: 20px; font-size: 1.3rem; text-transform: uppercase;">Formal / Etiqueta</p>
+      <p style="font-family: var(--font-serif); letter-spacing: 4px; font-weight: 700; color: var(--gold-dark); margin-bottom: 20px; font-size: 1.4rem; text-transform: uppercase;">ELEGANTE</p>
       
       <div class="dresscode-container">
-        <img src="silueta.jpg" alt="Código de vestimenta formal" class="dresscode-img">
+        <img src="silueta.jpg" alt="Código de vestimenta elegante" class="dresscode-img">
         <div class="dresscode-details">
           <p><strong>Hombres:</strong> Traje Formal</p>
           <p><strong>Mujeres:</strong> Vestido Formal Largo</p>
